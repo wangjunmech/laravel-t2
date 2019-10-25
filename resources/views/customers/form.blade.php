@@ -1,11 +1,11 @@
 <label for="name">Customer name</label><span class="redtxt"> {{$errors->first('name')}}</span>
-<input type="text" name='name' id='name' class="col-md-12">
+<input type="text" name='name' id='name' class="col-md-12" value="{{old('name')}}{{$customer->name}}">
 
 <label for="email">Customer email</label><span class="redtxt"> {{$errors->first('email')}}</span>
-<input type="text" name='email' id='email' class="col-md-12">
+<input type="text" name='email' id='email' class="col-md-12"  value="{{old('email')}}{{$customer->email}}">
 
 <label for="age">Customer age</label><span class="redtxt"> {{$errors->first('age')}}</span>
-<input type="text" name='age' id='age' class="col-md-12">
+<input type="text" name='age' id='age' class="col-md-12"  value="{{old('name')}}{{$customer->name}}">
 
 
 <label for="status">status</label><span class="redtxt">{{$errors->first('status')}}</span>

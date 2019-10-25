@@ -23,6 +23,17 @@
             color:red;
         }
     </style>
+    <script type="text/javascript">
+        function disp_confirm(s)
+          {
+          var r=confirm("确认要删除用户 "+ s +" 吗！")
+          if (r==true){
+            return true;
+            }else{
+            return false;
+          }
+        }
+    </script>
 </head>
 <body>
     <div id="app">

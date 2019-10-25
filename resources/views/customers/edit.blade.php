@@ -8,11 +8,12 @@
             <div class="card">
                 <div class="card-header"><h3>Edit customers</h3></div>
                 <div .class='form form-conroll'>
-                	<form action="">
+                	<form action="/customers/{{$customer->id}}" method="post" name=''>
                 	@include('customers/form')
+                    @method('patch')
 
                 	@csrf
-                	<button type="submit" class="btn btn-primary mx-2 my-2 px-5">Submit</button>
+                	<button type="submit" class="btn btn-primary mx-2 my-2 px-5">Save Edit</button>
 
                 	</form>
 

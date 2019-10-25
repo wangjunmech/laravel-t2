@@ -29,7 +29,8 @@ class customersController extends Controller
     public function create()
     {
         //
-        return view('customers/create');
+        $customer=new Customer();
+        return view('customers/create',compact('customer'));
     }
 
     /**
@@ -41,12 +42,12 @@ class customersController extends Controller
     public function store(Request $request)
     {
         //
-        $data = request()->validate([
-            'name'=>'required|min:3',
-            'email'=>'required|email|min:3',
-        ]);
+        $data =$this->formValidation();
+
+        // dd($data['name']);
         Customer::create($data);
-        return redirect('/customers');
+
+        return redirect('/customers')->with('msg','created new user: '.$data['name'].' successfully!');
         // dd($data);
     }
 
@@ -56,9 +57,10 @@ class customersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Customer $customer)
     {
         //
+        return view('/customers.show',compact('customer'));
     }
 
     /**
@@ -67,9 +69,13 @@ class customersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Customer $customer)
     {
-        //
+        // dd($customer);
+        // $customer = Customer::where('id', $customer)->firstorfail();
+
+        return view('customers.edit',compact('customer'));
+
     }
 
     /**
@@ -79,9 +85,11 @@ class customersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Customer $customer)
     {
-        //
+        $data =$this->formValidation();
+        $customer->update($data);
+        return redirect('/customers/'.$customer->id)->with('msg','Updated successfully!');
     }
 
     /**
@@ -90,8 +98,17 @@ class customersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Customer $customer)
     {
-        //
+        // $customer->delete();        
+        return redirect('/customers')->with('msg','User: '.$customer['name'].' deleted!');
+    }
+    public function formValidation(){
+        $data=request()->validate([
+            'name'=>'required|min:3',
+            'email'=>'required|min:3|max:30|email',
+        ]);
+        return $data;
+
     }
 }

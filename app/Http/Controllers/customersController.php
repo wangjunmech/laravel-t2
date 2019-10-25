@@ -7,6 +7,8 @@ use App\Customer;
 
 class customersController extends Controller
 {
+    // const Server = $_SERVER["HTTP_HOST"];
+    // const Server = $_SERVER["HTTP_HOST"];
     /**
      * Display a listing of the resource.
      *
@@ -59,7 +61,10 @@ class customersController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+
+        if(!strstr(@$_SERVER['HTTP_REFERER'],$_SERVER["HTTP_HOST"])){
+            abort(404);
+        }
         return view('/customers.show',compact('customer'));
     }
 
@@ -73,6 +78,9 @@ class customersController extends Controller
     {
         // dd($customer);
         // $customer = Customer::where('id', $customer)->firstorfail();
+        if(!strstr(@$_SERVER['HTTP_REFERER'],$_SERVER["HTTP_HOST"])){
+            abort(404);
+        }
 
         return view('customers.edit',compact('customer'));
 

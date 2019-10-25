@@ -29,7 +29,7 @@
 
         </div>
 
-                <h3>Customer Details</h3>
+                <h3>Customer Details</h3><?php ?>
                 <div>
 @if(session()->has('msg'))
     <div class="alert alert-success" role="alert">

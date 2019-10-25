@@ -36,6 +36,13 @@
     </script>
 </head>
 <body>
+    <?php
+    define("GREETING", "666");
+
+    @$http_referer = $_SERVER['HTTP_REFERER'];
+    $server = $_SERVER["HTTP_HOST"];
+
+    ?>
     <div id="app">
 
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">

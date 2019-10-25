@@ -19,3 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/customers', 'customersController');
+Route::view('/news', 'news');
+Route::view('/qualicast', 'qualicast');
+Route::view('/product', 'product');
+Route::view('/contact', 'contact');
+Route::view('/email', 'email');
+Route::view('/sitemap', 'sitemap');
